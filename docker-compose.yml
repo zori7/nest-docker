@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=nest_db
+      - POSTGRES_USER=nest_user
+      - POSTGRES_PASSWORD=mysecret
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer
+    restart: on-failure
+    ports:
+      - 8080:8080
